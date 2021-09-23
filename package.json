@@ -14,5 +14,13 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChainRxn12/book.search.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ChainRxn12/book.search/issues"
+  },
+  "homepage": "https://github.com/ChainRxn12/book.search#readme"
 }
