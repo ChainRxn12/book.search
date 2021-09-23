@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/ChainRxn12/book.search/issues"
   },
-  "homepage": "https://github.com/ChainRxn12/book.search#readme"
+  "homepage": "https://github.com/ChainRxn12/book.search#readme",
+  "dependencies": {
+    "if-env": "^1.0.4"
+  }
 }
