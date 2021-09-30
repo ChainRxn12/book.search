@@ -35,7 +35,6 @@ app.get('*', (req, res) => {
 
 db.once('open', () => {
   app.listen(PORT, async () => {
-
     await server.start();
     server.applyMiddleware({ app });
     console.log(`API server running on port ${PORT}!`);
