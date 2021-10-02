@@ -115,12 +115,12 @@ const SearchBooks = () => {
 
       <Container>
         <h2>
-          {searchedBooks.length
-            ? `Viewing ${searchedBooks.length} results:`
+          {searchedBooks?.length
+            ? `Viewing ${searchedBooks?.length} results:`
             : 'Search for a book to begin'}
         </h2>
         <CardColumns>
-          {searchedBooks.map((book) => {
+          {searchedBooks?.map((book) => {
             return (
               <Card key={book.bookId} border='dark'>
                 {book.image ? (
