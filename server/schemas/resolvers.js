@@ -36,28 +36,41 @@ const resolvers = {
 
       return { token, user };
     },
-    saveBook: async (
-      parent,
-      { userId, author, description, title, bookId, image, link }
-    ) => {
-      return User.findOneAndUpdate(
-        { _id: userId },
-        {
-          $addToSet: {
-            authors: author,
-            description: description,
-            title: title,
-            bookId: bookId,
-            image: image,
-            link: link,
-          },
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
-    },
+    // saveBook: async (
+    //   parent,
+    //   { userId, author, description, title, bookId, image, link }
+    // ) => {
+    //   return User.findOneAndUpdate(
+    //     { _id: userId },
+    //     {
+    //       $addToSet: {
+    //         authors: author,
+    //         description: description,
+    //         title: title,
+    //         bookId: bookId,
+    //         image: image,
+    //         link: link,
+    //       },
+    //     },
+    //     {
+    //       new: true,
+    //       runValidators: true,
+    //     }
+    //   );
+    // },
+          saveBook: async (parent, { input }, context) => {
+                 if (context.user) {
+                     const updatedUser = await User.findOneAndUpdate(
+                         { _id: context.user._id },
+                         { $addToSet: { savedBooks: input } },
+                         { new: true }
+                     ).populate('savedBooks');
+     
+                     return updatedUser;
+                 }
+     
+                 throw new AuthenticationError('You need to be logged in!');
+             },
     removeBook: async (parent, { bookId }) => {
       return User.findOneAndDelete({ _id: bookId });
     },
